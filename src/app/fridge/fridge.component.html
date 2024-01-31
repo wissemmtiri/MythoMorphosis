@@ -1,0 +1,27 @@
+<div class="flex flex-row">
+    <app-sidenavbar></app-sidenavbar>
+    <div class="py-7 px-7 flex flex-col">
+        <div id="title">
+            <h2 class="mb-4 text-6xl tracking-tight font-extrabold text-violet-950 uppercase">fridge</h2>
+        </div>
+        <div id="food_container" class="flex flex-row flex-wrap">
+            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mb-5 mx-2" *ngFor="let food of foods">
+                <a href="#">
+                    <img class="" src="../../assets/fridge/food.jfif" alt="" />
+                </a>
+                <div class="p-5 static">
+                    <a href="#" class="static">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight dark:text-white text-gray-950">{{ food.name }}</h5>
+                    </a>
+                    <ul class="pb-3">
+                        <li *ngFor="let detail of food.details | keyvalue">{{ detail.key }}: {{ detail.value }}</li>
+                    </ul>
+                    <a href=""
+                        class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-violet-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 self-end">
+                        Choose
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
