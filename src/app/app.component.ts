@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MythoMorphosis Frontend';
-  isGuest: boolean = false;
+  //isGuest: boolean = false;
 }
