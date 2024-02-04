@@ -9,24 +9,30 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-
   signUpForm!: FormGroup;
-  
-  constructor(private fb:FormBuilder, private auth: AuthService, private router: Router){}
-  
-  ngOnInit(){
-    this.signUpForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      passwordConfirm: ['', Validators.required]
-    }, {
-      validator: passwordMatchValidator('password', 'passwordConfirm') // Apply custom validator
-    });
+
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.signUpForm = this.fb.group(
+      {
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6)]],
+        passwordConfirm: ['', Validators.required],
+      },
+      {
+        validator: passwordMatchValidator('password', 'passwordConfirm'), // Apply custom validator
+      }
+    );
   }
 
   onSubmit() {
@@ -38,20 +44,18 @@ export class SignupComponent implements OnInit {
         this.signUpForm.value.password
       );
 
-      this.auth.signUp(signUpObj)
-        .subscribe({
-          next: (res => {
-            console.log(res.message);
-            this.signUpForm.reset();
-            this.router.navigate(['login']);
-            alert(res.message);
-          }),
-          error: (err => {
-            alert(err?.error.message);
-          })
-        });
+      this.auth.signUp(signUpObj).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.auth.storeToken(res.access_token);
+          this.router.navigate(['/dashboard']);
+        },
+        error: (err) => {
+          alert(err?.error.message);
+        },
+      });
     } else {
-      FormValidator.markFormGroupTouched(this.signUpForm); 
+      FormValidator.markFormGroupTouched(this.signUpForm);
     }
   }
 }

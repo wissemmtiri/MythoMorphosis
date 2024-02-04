@@ -4,13 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
-import { UserLoginDto } from 'src/app/models/user/user-login-dto'; 
+import { UserLoginDto } from 'src/app/models/user/user-login-dto';
 import FormValidator from '../../helpers/validateform';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   constructor(
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 
@@ -43,19 +43,19 @@ export class LoginComponent implements OnInit {
         // If sign in is successful, handle next
         next: (res) => {
           // Log the success message received
-          console.log(res.message);
+          console.log(res.access_token);
           // Reset the form
-          this.loginForm.reset();
+          //this.loginForm.reset();
           // Store the access token
-          this.auth.storeToken(res.accessToken);
+          this.auth.storeToken(res.access_token);
           // Store the refresh token
-          this.auth.storeRefreshToken(res.refreshToken);
+          //this.auth.storeRefreshToken(res.refreshToken);
           // Decode the token payload
-          const tokenPayload = this.auth.decodedToken();
+          //const tokenPayload = this.auth.decodedToken();
           // Set the full name for store
-          this.userStore.setFullNameForStore(tokenPayload.name);
+          //this.userStore.setFullNameForStore(tokenPayload.name);
           // Set the role for store
-          this.userStore.setRoleForStore(tokenPayload.role);
+          //this.userStore.setRoleForStore(tokenPayload.role);
           // Navigate to the dashboard
           this.router.navigate(['dashboard']);
         },
@@ -70,6 +70,4 @@ export class LoginComponent implements OnInit {
       FormValidator.markFormGroupTouched(this.loginForm);
     }
   }
-
 }
-

@@ -1,66 +1,62 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import {JwtHelperService} from '@auth0/angular-jwt'
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenApiModel } from '../models/token-api';
 import { UserLoginDto } from '../models/user/user-login-dto';
 import { UserSignUpDTO } from '../models/user/user-signup-dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private link : string ='';
-  private userPayload:any;
-  constructor (private http: HttpClient, private router: Router){
+  private link: string = 'http://localhost:3000/';
+  private userPayload: any;
+  constructor(private http: HttpClient, private router: Router) {
     this.userPayload = this.decodedToken();
-
   }
-  signUp(userObj: UserSignUpDTO){
-    return this.http.post<any>(`${this.link}signup`, userObj);
+  signUp(userObj: UserSignUpDTO) {
+    return this.http.post<any>(`${this.link}users/register`, userObj);
   }
-  signIn(loginObj : UserLoginDto){
-    return this.http.post<any>(`${this.link}login`,loginObj)
+  signIn(loginObj: UserLoginDto) {
+    console.log(loginObj);
+    return this.http.post<any>(`${this.link}users/login`, loginObj);
   }
-  signOut(){
+  signOut() {
     localStorage.clear();
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
-  storeToken(tokenValue: string){
-    localStorage.setItem('token', tokenValue)
-  }
-
-  getToken(){
-    return localStorage.getItem('token')
+  storeToken(tokenValue: string) {
+    localStorage.setItem('token', tokenValue);
   }
 
-  isAuthenticated(): boolean{
-    return !!localStorage.getItem('token')
+  getToken() {
+    return localStorage.getItem('token');
   }
-  decodedToken(){
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+  decodedToken() {
     const jwtHelper = new JwtHelperService();
     const token = this.getToken()!;
-    console.log(jwtHelper.decodeToken(token))
-    return jwtHelper.decodeToken(token)
+    console.log(jwtHelper.decodeToken(token));
+    return jwtHelper.decodeToken(token);
   }
-  getfullNameFromToken(){
-    if(this.userPayload)
-    return this.userPayload.name;
+  getfullNameFromToken() {
+    if (this.userPayload) return this.userPayload.name;
   }
 
-  getRoleFromToken(){
-    if(this.userPayload)
-    return this.userPayload.role;
+  getRoleFromToken() {
+    if (this.userPayload) return this.userPayload.role;
   }
-  storeRefreshToken(tokenValue: string){
-    localStorage.setItem('refreshToken', tokenValue)
+  storeRefreshToken(tokenValue: string) {
+    localStorage.setItem('refreshToken', tokenValue);
   }
-  getRefreshToken(){
-    return localStorage.getItem('refreshToken')
+  getRefreshToken() {
+    return localStorage.getItem('refreshToken');
   }
-  renewToken(tokenApi : TokenApiModel){
-    return this.http.post<any>(`${this.link}refresh`, tokenApi)
+  renewToken(tokenApi: TokenApiModel) {
+    return this.http.post<any>(`${this.link}refresh`, tokenApi);
   }
 }
-
-
