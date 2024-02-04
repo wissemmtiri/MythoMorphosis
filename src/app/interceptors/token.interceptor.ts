@@ -4,17 +4,13 @@ import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse
 import { Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
-import { NgToastService } from 'ng-angular-popup';
 import { TokenApiModel } from '../models/token-api';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-
-  constructor(private auth: AuthService, private toast: NgToastService, private router: Router) {}
-  
+  constructor(private auth: AuthService, private router: Router) {}
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const myToken = this.auth.getToken();
-
     if(myToken){
       request = request.clone({
         setHeaders: {Authorization:`Bearer ${myToken}`}  // "Bearer "+myToken
@@ -23,9 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err:any)=>{
         if(err instanceof HttpErrorResponse){
-          if(err.status === 401){
-            this.toast.warning({detail:"Warning", summary:"Token is expired, Please Login again"});
-            //this.router.navigate(['login'])
+          if(err.status === 401){            //this.router.navigate(['login'])
             return this.handleUnAuthorizedError(request,next);
           }
         }
@@ -49,7 +43,6 @@ export class TokenInterceptor implements HttpInterceptor {
       }),
       catchError((err)=>{
         return throwError(()=>{
-          this.toast.warning({detail:"Warning", summary:"Token is expired, Please Login again"});
           this.router.navigate(['login'])
         })
       })

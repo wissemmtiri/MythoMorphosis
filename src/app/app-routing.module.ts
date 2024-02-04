@@ -13,6 +13,7 @@ import { WorkoutDetailsComponent } from './components/workout-details/workout-de
 import { LogSessionComponent } from './components/log-session/log-session.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent
   },
-  { path:'dashboard', component: DashboardComponent},
+  { path:'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
   {
     path: 'sciencehub',

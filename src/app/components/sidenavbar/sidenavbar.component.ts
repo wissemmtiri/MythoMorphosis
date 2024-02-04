@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserStoreService } from 'src/app/services/user-store.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { UserStoreService } from 'src/app/services/user-store.service';
 })
 export class SidenavbarComponent implements OnInit {
   public fullName: string = '';
-  constructor(private userStore: UserStoreService) {}
+  constructor(private userStore: UserStoreService, private auth: AuthService) {}
   ngOnInit(): void {
     this.userStore.getProfile().subscribe({
       next: (res) => {
@@ -20,4 +21,8 @@ export class SidenavbarComponent implements OnInit {
       },
     });
   }
+  SignOut(){
+    this.auth.signOut();
+  }
 }
+
