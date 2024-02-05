@@ -19,7 +19,8 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err:any)=>{
         if(err instanceof HttpErrorResponse){
-          if(err.status === 401){            //this.router.navigate(['login'])
+          if(err.status === 401){            
+            this.router.navigate(['login'])
             return this.handleUnAuthorizedError(request,next);
           }
         }

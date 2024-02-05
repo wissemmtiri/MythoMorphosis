@@ -1,4 +1,4 @@
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
@@ -22,6 +22,7 @@ import { FooterComponent } from "./home/footer/footer.component";
 import { HomeComponent } from "./home/home.component";
 import { ServicesComponent } from "./home/services/services.component";
 import { TeamComponent } from "./home/team/team.component";
+import { TokenInterceptor } from "./interceptors/token.interceptor";
 
 
 
@@ -53,7 +54,8 @@ import { TeamComponent } from "./home/team/team.component";
     HttpClientModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         // If sign in is successful, handle next
         next: (res) => {
           // Log the success message received
-          console.log(res.access_token);
+          //console.log(res.access_token);
           // Reset the form
           //this.loginForm.reset();
           // Store the access token

@@ -36,7 +36,7 @@ const routes: Routes = [
 
   {
     path: 'sciencehub',
-    component: SciencehubComponent
+    component: SciencehubComponent,canActivate: [AuthGuard] 
   },
   {
     path: 'bookmarks',

@@ -13,7 +13,6 @@ export class SidenavbarComponent implements OnInit {
   ngOnInit(): void {
     this.userStore.getProfile().subscribe({
       next: (res) => {
-        console.log(res);
         this.fullName = res.firstname + ' ' + res.lastname;
       },
       error: (err) => {

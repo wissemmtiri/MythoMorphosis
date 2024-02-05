@@ -46,7 +46,7 @@ export class SignupComponent implements OnInit {
 
       this.auth.signUp(signUpObj).subscribe({
         next: (res) => {
-          console.log(res);
+          //console.log(res);
           this.auth.storeToken(res.access_token);
           this.router.navigate(['/dashboard']);
         },

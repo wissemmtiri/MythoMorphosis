@@ -19,7 +19,7 @@ export class AuthService {
     return this.http.post<any>(`${this.link}users/register`, userObj);
   }
   signIn(loginObj: UserLoginDto) {
-    console.log(loginObj);
+    //console.log(loginObj);
     return this.http.post<any>(`${this.link}users/login`, loginObj);
   }
   signOut() {
