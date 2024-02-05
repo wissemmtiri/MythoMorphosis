@@ -29,8 +29,8 @@ export class BookmarksComponent {
     this.article.removeFromBookMarks(id).subscribe({
       next: (res) => {
         console.log('Article removed from bookmarks:', res);
-        // Assuming you have a method to refresh your bookmarked articles after deletion
         this.refreshBookmarks();
+        window.location.reload()
       },
       error: (err) => {
         console.error('Error removing article from bookmarks:', err);
@@ -40,10 +40,8 @@ export class BookmarksComponent {
   
     // Method to refresh bookmarked articles after deletion
     refreshBookmarks() {
-    // Call a method to fetch the latest bookmarked articles and update your local data
       this.article.getBookmarks().subscribe({
         next: (bookmarkedArticles) => {
-        // Update your local data (e.g., update the bookmarks array)
           this.bookMarks = bookmarkedArticles;
           console.log('Bookmarked articles refreshed:', this.bookMarks);
       },
@@ -54,9 +52,9 @@ export class BookmarksComponent {
   }
   getBookmarks(){
     this.article.getBookmarks().subscribe({
-      next: (res) => {
-        console.log(res);
-        this.bookMarks = res;
+      next: (bookmarkedArticles) => {
+        console.log(bookmarkedArticles);
+        this.bookMarks = bookmarkedArticles;
       },
       error: (err) => {
         console.log(err);
