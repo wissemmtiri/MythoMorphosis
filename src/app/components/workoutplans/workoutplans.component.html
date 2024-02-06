@@ -14,8 +14,8 @@
             </div>
             <div class="flex flex-row flex-wrap justify-around bg-gray-200/50 rounded-lg" id="beginner_plans">
                 <div class="max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 my-12"
-                    *ngFor="let plan of beginner_workoutplans">
-                    <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>
+                    *ngFor="let beginner_plan of beginner_workoutplans">
+                    <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">{{beginner_plan.title}}</h5>
                     <div class="flex items-baseline text-gray-900 dark:text-white">
                         <span class="text-3xl font-semibold">$</span>
                         <span class="text-5xl font-extrabold tracking-tight">49</span>
@@ -82,7 +82,7 @@
                             <span class="text-base font-normal leading-tight text-gray-500 ms-3">24×7 phone & email support</span>
                         </li>
                     </ul>
-                    <a routerLink="/workout/details/{{ plan.id }}" type="button"
+                    <a routerLink="/workout/details/{{ beginner_plan.id }}" type="button"
                         class="text-white bg-gray-600/25 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center mb-3">Details</a>
                     <a type="button"
                         class="text-white bg-violet-800 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose
@@ -100,8 +100,8 @@
             </div>
             <div class="flex flex-row flex-wrap justify-around bg-gray-200/25 rounded-lg" id="intermediate_plans">
                 <div class="max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 my-12"
-                    *ngFor="let plan of intermediate_workoutplans">
-                    <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>
+                    *ngFor="let inter_plan of intermediate_workoutplans">
+                    <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">{{ inter_plan.title }}</h5>
                     <div class="flex items-baseline text-gray-900 dark:text-white">
                         <span class="text-3xl font-semibold">$</span>
                         <span class="text-5xl font-extrabold tracking-tight">49</span>
@@ -168,7 +168,7 @@
                             <span class="text-base font-normal leading-tight text-gray-500 ms-3">24×7 phone & email support</span>
                         </li>
                     </ul>
-                    <a routerLink="/workout/details/{{ plan.id }}" type="button"
+                    <a routerLink="/workout/details/{{ inter_plan.id }}" type="button"
                         class="text-white bg-gray-600/25 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center mb-3">Details</a>
                     <a type="button"
                         class="text-white bg-violet-800 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose
@@ -186,8 +186,8 @@
             </div>
             <div class="flex flex-row flex-wrap justify-around bg-gray-200/50 rounded-lg" id="advanced_plans">
                 <div class="max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700 my-12"
-                    *ngFor="let plan of advanced_workoutplans">
-                    <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">Standard plan</h5>
+                    *ngFor="let ad_plan of advanced_workoutplans">
+                    <h5 class="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">{{ ad_plan.title }}</h5>
                     <div class="flex items-baseline text-gray-900 dark:text-white">
                         <span class="text-3xl font-semibold">$</span>
                         <span class="text-5xl font-extrabold tracking-tight">49</span>
@@ -254,14 +254,14 @@
                             <span class="text-base font-normal leading-tight text-gray-500 ms-3">24×7 phone & email support</span>
                         </li>
                     </ul>
-                    <a routerLink="/workout/details/{{ plan.id }}" type="button"
+                    <a routerLink="/workout/details/{{ ad_plan.id }}" type="button"
                         class="text-white bg-gray-600/25 hover:bg-gray-400 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center mb-3">Details</a>
                     <a type="button"
                         class="text-white bg-violet-800 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center">Choose
                         plan</a>
                 </div>
             </div>
-
+	
         </div>
     </div>
 </div>

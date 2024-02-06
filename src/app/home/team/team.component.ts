@@ -9,8 +9,8 @@ export class TeamComponent {
   team = [
       {
         "name": "Wissem MTIRI",
-        "department": "Frontend",
-        "photo": "b97b2d8984a60277373af4bdab08a0f0.jpg",
+        "department": "Full Stack",
+        "photo": "default-male.png",
         "links": {
           "facebook": "https://www.facebook.com/wissem.mtiri.5",
           "linkedin": "https://www.linkedin.com",
@@ -19,8 +19,8 @@ export class TeamComponent {
       },
       {
         "name": "Nermine BACHA",
-        "department": "Frontend",
-        "photo": "b97b2d8984a60277373af4bdab08a0f0.jpg",
+        "department": "Full Stack",
+        "photo": "default-female.png",
         "links": {
           "facebook": "https://www.facebook.com/wissem.mtiri.5",
           "linkedin": "https://www.linkedin.com",
@@ -30,7 +30,7 @@ export class TeamComponent {
       {
         "name": "Abdelkhalek SAADANI",
         "department": "Backend",
-        "photo": "b97b2d8984a60277373af4bdab08a0f0.jpg",
+        "photo": "default-male.png",
         "links": {
           "facebook": "https://www.facebook.com/wissem.mtiri.5",
           "linkedin": "https://www.linkedin.com",
@@ -40,7 +40,7 @@ export class TeamComponent {
       {
         "name": "Mohamed Aziz BOUZID",
         "department": "Backend",
-        "photo": "b97b2d8984a60277373af4bdab08a0f0.jpg",
+        "photo": "default-male.png",
         "links": {
           "facebook": "https://www.facebook.com/wissem.mtiri.5",
           "linkedin": "https://www.linkedin.com",
@@ -50,7 +50,7 @@ export class TeamComponent {
       {
         "name": "Khalil ATI",
         "department": "Backend",
-        "photo": "b97b2d8984a60277373af4bdab08a0f0.jpg",
+        "photo": "default-male.png",
         "links": {
           "facebook": "https://www.facebook.com/wissem.mtiri.5",
           "linkedin": "https://www.linkedin.com",

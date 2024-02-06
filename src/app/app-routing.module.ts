@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path:'signup',
-    component: SignupComponent
+    component: SignupComponent, canActivate: [AuthGuard]
   },
   {
     path: 'profile',
@@ -40,27 +40,27 @@ const routes: Routes = [
   },
   {
     path: 'bookmarks',
-    component: BookmarksComponent
+    component: BookmarksComponent, canActivate: [AuthGuard]
   },
   {
     path: 'caloriestracker',
-    component: CaloriestrackerComponent
+    component: CaloriestrackerComponent,canActivate: [AuthGuard]
   },
   {
     path: 'fridge',
-    component: FridgeComponent
+    component: FridgeComponent, canActivate: [AuthGuard]
   },
   {
     path: 'workout/start',
-    component: WorkoutplansComponent
+    component: WorkoutplansComponent, canActivate: [AuthGuard]
   },
   {
     path: 'workout/details/:id',
-    component: WorkoutDetailsComponent
+    component: WorkoutDetailsComponent, canActivate: [AuthGuard]
   },
   {
     path: 'workout/log',
-    component: LogSessionComponent
+    component: LogSessionComponent,canActivate: [AuthGuard]
   },
   {
     path: '**',

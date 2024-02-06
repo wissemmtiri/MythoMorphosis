@@ -23,6 +23,7 @@ import { HomeComponent } from "./home/home.component";
 import { ServicesComponent } from "./home/services/services.component";
 import { TeamComponent } from "./home/team/team.component";
 import { TokenInterceptor } from "./interceptors/token.interceptor";
+import { DefaultImagePipe } from './pipes/default-image.pipe';
 
 
 
@@ -47,6 +48,7 @@ import { TokenInterceptor } from "./interceptors/token.interceptor";
     WorkoutplansComponent,
     WorkoutDetailsComponent,
     LogSessionComponent,
+    DefaultImagePipe,
   ],
   imports: [
     BrowserModule,
