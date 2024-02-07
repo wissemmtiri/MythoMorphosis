@@ -6,7 +6,7 @@
         </div>
         <div id="food_container" class="flex flex-row flex-wrap">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow mb-5 mx-2" *ngFor="let food of foods">
-                <a href="#">
+                <a href="https://www.google.com/search?q={{food.name}}">
                     <img class="" src="{{food.imageUrl | defaultImage:'food'}}" alt="" />
                 </a>
                 <div class="p-5 static">

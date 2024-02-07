@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Article } from 'src/app/models/articles/articles';
 import { ArticleService } from 'src/app/services/articles-service';
 
@@ -30,7 +29,7 @@ export class BookmarksComponent {
       next: (res) => {
         console.log('Article removed from bookmarks:', res);
         this.refreshBookmarks();
-        window.location.reload()
+        //window.location.reload()
       },
       error: (err) => {
         console.error('Error removing article from bookmarks:', err);

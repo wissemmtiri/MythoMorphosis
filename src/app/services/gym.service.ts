@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Session } from '../models/workouts/session';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GymService {
-  private apiUrl = 'your_backend_api_url'; 
+  private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
   //réecupérer le tableau des sessions du current_week
   getCurrentWeek(): Observable<Session[]> {

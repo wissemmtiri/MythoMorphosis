@@ -7,11 +7,11 @@
 
         <div id="tags" class="flex flex-row max-w-screen-sm mb-5">
                 <span
-                    class="bg-purple-100 text-purple-800 text-s font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">{{ workout_test.level }}</span>
+                    class="bg-purple-100 text-purple-800 text-s font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">{{ workoutDetails.level }}</span>
                 <span
-                    class="bg-purple-100 text-purple-800 text-s font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">{{ workout_test.duration }} weeks</span>
+                    class="bg-purple-100 text-purple-800 text-s font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">{{ workoutDetails.duration }} weeks</span>
                 <span
-                    class="bg-purple-100 text-purple-800 text-s font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">{{ workout_test.frequency }} sessions per week</span>
+                    class="bg-purple-100 text-purple-800 text-s font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">{{ workoutDetails.frequency }} sessions per week</span>
         </div>
 
         <hr>
@@ -19,13 +19,13 @@
         <div id="details" class="flex flex-row justify-around flex-wrap bg-gray-200/50 my-5 px-7 pb-10 rounded-xl">
             <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700
                 mt-7 mx-3" 
-            *ngFor="let session of workout_test.Sessions ">
+            *ngFor="let session of workoutDetails.sessions ">
                 <a href="#">
-                    <img class="rounded-t-lg h-64" src="../../assets/workout_details/{{ session.url }}.jpg" alt="" />
+                    <img class="rounded-t-lg h-64" src="../../../assets/workout_details/chest.jpg" alt="" />
                 </a>
                 <div class="p-5">
                     <a>
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pb-5">{{ session.muscleGroup }} Session</h5>
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white pb-5">{{ session.name | titlecase }} Session</h5>
                     </a>
                     <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
                         <li class="flex items-center space-x-3 rtl:space-x-reverse" *ngFor="let exercise of session.exercises">
@@ -34,13 +34,13 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M1 5.917 5.724 10.5 15 1.5" />
                             </svg>
-                            <a href="https://www.google.com/search?q={{exercise}}">{{ exercise }}</a>
+                            <a href="https://www.google.com/search?q={{exercise}}"><b>{{ exercise.exercise.name }} </b> : {{ exercise.exercise.muscleGroup }}</a>
                         </li>
                     </ul>
                 </div>
             </div>
 
-            <a type="button"
+            <a (click)="startWorkout(workoutDetails.id)" type="button"
                 class="text-white bg-violet-800 hover:bg-violet-700 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center max-w-screen-sm mt-14">Start workout</a>
         </div>
     </div>

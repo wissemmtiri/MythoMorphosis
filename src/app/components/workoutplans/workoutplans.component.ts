@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { WorkoutPlan } from 'src/app/models/workouts/workout-plan';
 import { PlansService } from 'src/app/services/plans-service';
 
@@ -12,7 +13,7 @@ export class WorkoutplansComponent implements OnInit {
   intermediate_workoutplans !:WorkoutPlan[];
   advanced_workoutplans !:WorkoutPlan[];
 
-  constructor(private plansService: PlansService) {  
+  constructor(private plansService: PlansService, private router : Router, private planService :PlansService) {  
   }
   ngOnInit() {
     this.getBeginnerPlans();
@@ -23,7 +24,7 @@ export class WorkoutplansComponent implements OnInit {
     this.plansService.getPlansByLevel('beginner').subscribe({
       next: (res) => {
         this. beginner_workoutplans = res;
-        console.log(this. beginner_workoutplans);
+        //console.log(this. beginner_workoutplans);
       },
       error: (err) => {
         console.log(err);
@@ -34,7 +35,7 @@ export class WorkoutplansComponent implements OnInit {
     this.plansService.getPlansByLevel('intermediate').subscribe({
       next: (res) => {
         this. intermediate_workoutplans = res;
-        console.log(this. intermediate_workoutplans);
+        //console.log(this. intermediate_workoutplans);
       },
       error: (err) => {
         console.log(err);
@@ -45,12 +46,25 @@ export class WorkoutplansComponent implements OnInit {
     this.plansService.getPlansByLevel('advanced').subscribe({
       next: (res) => {
         this. advanced_workoutplans = res;
-        console.log(this. advanced_workoutplans);
+        //console.log(this. advanced_workoutplans);
       },
       error: (err) => {
         console.log(err);
       },
     });
   } 
+  showDetails(id: number){
+    this.router.navigate([`workout/details/${id}`]);
+  }
+  startWorkout(id:number){
+    this.planService.choosePlan(id).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }
 

@@ -5,12 +5,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { TokenApiModel } from '../models/token-api';
 import { UserLoginDto } from '../models/user/user-login-dto';
 import { UserSignUpDTO } from '../models/user/user-signup-dto';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private link: string = 'http://localhost:3000/';
+  private link = environment.apiUrl;
   private userPayload: any;
   constructor(private http: HttpClient, private router: Router) {
     this.userPayload = this.decodedToken();

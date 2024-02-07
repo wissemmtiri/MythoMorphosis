@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Food } from '../models/food';
 import { environment } from 'src/environments/environment.development';
+import { WorkoutPlan } from '../models/workouts/workout-plan';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FoodService {
+export class PlanDetailService {
   private apiUrl = environment.apiUrl;
- 
-  constructor(private http: HttpClient) { 
-    
+  constructor(private http: HttpClient) {    
   }
-  getFood():Observable<Food[]> {
-    return this.http.get<any>(`${this.apiUrl}food/list`);
+  getPlanDetailById(id: number): Observable<WorkoutPlan> {
+    return this.http.get<WorkoutPlan>(`${this.apiUrl}workout-plans/${id}`);
   }
-
+  
 }

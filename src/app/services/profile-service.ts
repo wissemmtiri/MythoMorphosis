@@ -1,23 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Session } from '../models/workouts/session';
-import { Article } from '../models/articles/articles';
 import { Profile } from '../models/user/profile-dto';
+import { environment } from 'src/environments/environment.development';
+import { WorkoutPlan } from '../models/workouts/workout-plan';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
-  private apiUrl: string = 'http://localhost:3000/';
+  private apiUrl = environment.apiUrl;
  
   constructor(private http: HttpClient) { 
     
   }
   getProfile():Observable<Profile> {
-    return this.http.get<any>(`${this.apiUrl}users/profile`);
+    return this.http.get<Profile>(`${this.apiUrl}users/profile`);
   }
   updateProfile(profile: Profile): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}users/update-profile`, profile);
+    return this.http.put<Profile>(`${this.apiUrl}users/update-profile`, profile);
+  }
+
+  getWorkoutPlan():Observable<WorkoutPlan> {
+    return this.http.get<WorkoutPlan>(`${this.apiUrl}users/workoutplan`);
   }
 }

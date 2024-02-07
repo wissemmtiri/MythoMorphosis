@@ -14,18 +14,18 @@ export class ArticleService {
     
   }
   getArticles():Observable<Article[]> {
-    return this.http.get<any>(`${this.apiUrl}articles/all`);
+    return this.http.get<Article[]>(`${this.apiUrl}articles/all`);
   }
   getBookmarks():Observable<Article[]> {
-    return this.http.get<any>(`${this.apiUrl}articles/bookmarks`);
+    return this.http.get<Article[]>(`${this.apiUrl}articles/bookmarks`);
   }
   getArticleById(id: number) :Observable<Article>{
-    return this.http.get<any>(`${this.apiUrl}articles/${id}`);
+    return this.http.get<Article>(`${this.apiUrl}articles/${id}`);
   }
   addToBookMarks(id:number){
     return this.http.post<any>(`${this.apiUrl}articles/bookmarK/${id}`,{});
   }
   removeFromBookMarks(id:number):Observable<Article[]>{
-    return this.http.post<any>(`${this.apiUrl}articles/bookmarK/${id}`,{});
+    return this.http.post<Article[]>(`${this.apiUrl}articles/bookmarK/${id}`,{});
   }
 }
